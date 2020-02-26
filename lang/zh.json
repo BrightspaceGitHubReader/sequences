@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "单元 {current}/{total}",
    "sequenceNavigator.due" : "截止日期 {dueDate}",
    "sequenceNavigator.exempt" : "免除",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "以下是本单元要完成的剩余部分：",
    "sequenceNavigator.optional" : "可选",
    "sequenceNavigator.requirementsCompleted" : "已完成 {completed} 个要求（共 {total, plural, one {# 个} other {# 个}}",
    "sequenceNavigator.starts" : "开始日期 {startDate}",

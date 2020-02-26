@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "Du har slutfört alla aktiviteter i den här enheten. Bra jobbat!",
-   "backToContents" : "Återgå till innehållsförteckningen",
+   "backToContents" : "Tillbaka till innehåll",
    "cannotBeRendered" : "Innehållsobjektet kan inte återges.",
    "completed" : "Slutförda",
    "congratulations" : "Grattis!",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "Enhet {current} av {total}",
    "sequenceNavigator.due" : "Förfaller {dueDate}",
    "sequenceNavigator.exempt" : "Undantagen",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "Det här är kvarvarande delar för att slutföra den här enheten:",
    "sequenceNavigator.optional" : "Valfritt",
    "sequenceNavigator.requirementsCompleted" : "{completed} av {total, plural, one {# krav} other {# krav}} slutförda",
    "sequenceNavigator.starts" : "Börjar {startDate}",

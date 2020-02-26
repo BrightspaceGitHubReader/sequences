@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "Je hebt alle activiteiten in deze eenheid voltooid. Goed gedaan!",
-   "backToContents" : "Terug naar Inhoudsopgave",
+   "backToContents" : "Terug naar inhoud",
    "cannotBeRendered" : "Dit inhoudsitem kan niet worden weergegeven.",
    "completed" : "Voltooid op",
    "congratulations" : "Gefeliciteerd!",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "Eenheid {current} van {total}",
    "sequenceNavigator.due" : "Uiterste datum {dueDate}",
    "sequenceNavigator.exempt" : "Vrijstellen",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "Dit zijn de onderdelen die nog voltooid moeten worden:",
    "sequenceNavigator.optional" : "Optioneel",
    "sequenceNavigator.requirementsCompleted" : "{completed} van {total, plural, one {# vereiste} other {# vereisten}} voltooid",
    "sequenceNavigator.starts" : "Begint op {startDate}",

@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "Você concluiu todas as atividades nesta unidade. Bom trabalho!",
-   "backToContents" : "Voltar para Sumário",
+   "backToContents" : "Voltar ao Conteúdo",
    "cannotBeRendered" : "Este item de conteúdo não pode ser processado.",
    "completed" : "Concluída",
    "congratulations" : "Parabéns!",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "Unidade {current} de {total}",
    "sequenceNavigator.due" : "Prazo {dueDate}",
    "sequenceNavigator.exempt" : "Isento",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "Estas são as partes que faltam para concluir a unidade:",
    "sequenceNavigator.optional" : "Opcional",
    "sequenceNavigator.requirementsCompleted" : "Conclusão de {completed} de {total, plural, one {# requisito} other {# requisitos}}",
    "sequenceNavigator.starts" : "Início {startDate}",

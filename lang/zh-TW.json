@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "您已完成此單元的所有活動。做得好！",
-   "backToContents" : "返回「目錄」",
+   "backToContents" : "返回「內容」",
    "cannotBeRendered" : "無法轉譯此內容項目。",
    "completed" : "已完成",
    "congratulations" : "恭喜！",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "單元 {current}，共 {total} 個單元",
    "sequenceNavigator.due" : "截止日期：{dueDate}",
    "sequenceNavigator.exempt" : "免除",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "若要完成此單元，還需要這些項目：",
    "sequenceNavigator.optional" : "選擇性",
    "sequenceNavigator.requirementsCompleted" : "已完成 {completed}/{total, plural, one {# 個要求} other {# 個要求}}",
    "sequenceNavigator.starts" : "開始於 {startDate}",

@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "Sie haben alle Aktivitäten in dieser Einheit abgeschlossen. Gut gemacht!",
-   "backToContents" : "Zurück zum Inhaltsverzeichnis",
+   "backToContents" : "Zurück zum Inhalt",
    "cannotBeRendered" : "Dieses Inhaltselement kann nicht gerendert werden.",
    "completed" : "Abgeschlossen",
    "congratulations" : "Glückwunsch!",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "Einheit {current} von {total}",
    "sequenceNavigator.due" : "Abgabetermin: {dueDate}",
    "sequenceNavigator.exempt" : "Ausgenommen",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "Dies sind die Inhalte, die noch übrig sind, um diese Einheit abzuschließen:",
    "sequenceNavigator.optional" : "Optional",
    "sequenceNavigator.requirementsCompleted" : "{completed} von {total, plural, one {# Erfordernis} other {# Erfordernisse}} abgeschlossen",
    "sequenceNavigator.starts" : "Beginnt am {startDate}",

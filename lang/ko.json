@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "이 단원의 모든 활동을 완료했습니다. 잘 하셨습니다!",
-   "backToContents" : "목차로 돌아가기",
+   "backToContents" : "콘텐츠로 돌아가기",
    "cannotBeRendered" : "이 콘텐츠 항목을 렌더링할 수 없습니다.",
    "completed" : "완료됨",
    "congratulations" : "축하합니다!",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "단위 {current}/{total}",
    "sequenceNavigator.due" : "기한 {dueDate}일",
    "sequenceNavigator.exempt" : "면제",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "이 단위를 완료하기 위해 남은 조각은 다음과 같습니다.",
    "sequenceNavigator.optional" : "선택사항",
    "sequenceNavigator.requirementsCompleted" : "{completed}/{total, plural, one {# requirement} other {# requirements}}개 완료됨",
    "sequenceNavigator.starts" : "{startDate}에 시작",

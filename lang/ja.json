@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "この単位のすべてのアクティビティを完了しました。お疲れ様でした。",
-   "backToContents" : "目次に戻る",
+   "backToContents" : "コンテンツに戻る",
    "cannotBeRendered" : "このコンテンツ項目はレンダリングできません。",
    "completed" : "完了",
    "congratulations" : "おめでとうございます。",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "単位 {current}/{total}",
    "sequenceNavigator.due" : "期限 {dueDate}",
    "sequenceNavigator.exempt" : "免除",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "このユニットを完了するために残された部分は次のとおりです。",
    "sequenceNavigator.optional" : "オプション",
    "sequenceNavigator.requirementsCompleted" : "{total, plural, one {必須 # 項目} other {必須 # 項目}}のうち {completed} 項目が完了",
    "sequenceNavigator.starts" : "開始日 {startDate}",

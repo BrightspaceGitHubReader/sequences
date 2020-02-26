@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "لقد أكملت كل النشاطات في هذه الوحدة. أحسنت!",
-   "backToContents" : "العودة إلى جدول المحتويات",
+   "backToContents" : "العودة إلى المحتوى",
    "cannotBeRendered" : "لا يمكن عرض مادة المحتوى هذه.",
    "completed" : "مكتمل",
    "congratulations" : "تهانينا!",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "الوحدة {current} من أصل {total}",
    "sequenceNavigator.due" : "تاريخ الاستحقاق في {dueDate}",
    "sequenceNavigator.exempt" : "إعفاء",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "هذه هي الأقسام المتبقية لإكمال هذه الوحدة:",
    "sequenceNavigator.optional" : "اختياري",
    "sequenceNavigator.requirementsCompleted" : "اكتمال {completed} من أصل {total, plural, one {# متطلب} other {# من المتطلبات}}",
    "sequenceNavigator.starts" : "تاريخ البدء {startDate}",

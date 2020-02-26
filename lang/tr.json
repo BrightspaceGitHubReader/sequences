@@ -1,6 +1,6 @@
 {
    "activitiesFinishedGreatJob" : "Bu ünitedeki tüm etkinlikleri tamamladınız. Harika gidiyorsunuz!",
-   "backToContents" : "İçindekilere Geri Dön",
+   "backToContents" : "İçeriğe Dön",
    "cannotBeRendered" : "Bu içerik öğesi işlenemiyor.",
    "completed" : "Tamamlandı",
    "congratulations" : "Tebrikler!",
@@ -31,7 +31,7 @@
    "sequenceNavigator.currentModule" : "Birim {current} / {total}",
    "sequenceNavigator.due" : "Teslim Tarihi: {dueDate}",
    "sequenceNavigator.exempt" : "Muaf Tut",
-   "sequenceNavigator.missedActivitiesListHeader" : "These are the pieces left to complete this unit:",
+   "sequenceNavigator.missedActivitiesListHeader" : "Bu ünitede tamamlanması gereken kısımlar şunlardır:",
    "sequenceNavigator.optional" : "İsteğe Bağlı",
    "sequenceNavigator.requirementsCompleted" : "{completed} / {total, plural, one {# gereklilik} other {# gereklilik}} tamamlandı",
    "sequenceNavigator.starts" : "{startDate} tarihinde başlayacak",
