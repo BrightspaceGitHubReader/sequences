@@ -81,8 +81,10 @@ Include `[increment major]`, `[increment minor]` or `[skip version]` in your mer
 
 1.  Follow the steps in [brightspace-integration](https://github.com/Brightspace/brightspace-integration) to clone your own local copy of bsi. (Be sure to follow the instructions to update `D2L.LP.Web.UI.Html.Bsi.config.json` or the `d2l.System.BsiEnvironmentOverride` config. variable)
 
-2.  Navigate to the Config Variable Browser found in the Brightspace Admin Tools gear menu and enable the following feature:
-`d2l.Tools.SequenceViewer.EnableLearnerExperience`
+2.  Navigate to the Config Variable Browser found in the Brightspace Admin Tools gear menu and enable the following features:
+* `d2l.Tools.Content.IsLessonsEnabled`
+* `d2l.Tools.Content.UseLessonsExperience`
+* `d2l.Tools.Content.NewLearnerExperience`
 
 3.  Run
     ```shell
