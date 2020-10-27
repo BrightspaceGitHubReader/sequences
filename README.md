@@ -76,3 +76,36 @@ npm build:lang
 By default, when a pull request is merged the patch version in the `package.json` will be incremented, a tag will be created, and a Github release will be created.
 
 Include `[increment major]`, `[increment minor]` or `[skip version]` in your merge commit message to change the default versioning behavior.
+
+## Integrating sequences into Brightspace
+
+1.  Follow the steps in [brightspace-integration](https://github.com/Brightspace/brightspace-integration) to clone your own local copy of bsi. (Be sure to follow the instructions to update `D2L.LP.Web.UI.Html.Bsi.config.json` or the `d2l.System.BsiEnvironmentOverride` config. variable)
+
+2.  Navigate to the Config Variable Browser found in the Brightspace Admin Tools gear menu and enable the following features:
+* `d2l.Tools.Content.IsLessonsEnabled`
+* `d2l.Tools.Content.UseLessonsExperience`
+* `d2l.Tools.Content.NewLearnerExperience`
+
+3.  Run
+    ```shell
+    npm link 
+    ```
+    in your `d2l-sequences` folder to add your local sequence viewer to the npm registry.
+
+4.  Build
+    ```shell
+    polymer build
+    ```
+    and serve
+    ```shell
+    polymer serve build\default
+    ```
+    your local sequence viewer.
+
+5.  Run
+	```shell
+	npm link d2l-sequences
+	```
+	in your `brightspace-integration` folder to link bsi to your local sequence viewer.
+
+6.  Login as a student in your Brightspace OrgUnit and navigate to a topic
