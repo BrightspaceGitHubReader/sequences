@@ -1,0 +1,137 @@
+{
+	"class": [
+		"release-condition-fix",
+		"sequenced-activity"
+	],
+	"properties": {
+		"title": "My Video Link",
+		"courseName": "Course",
+		"canDownload": true,
+		"canPrint": true
+	},
+	"entities": [
+		{
+			"class": [
+				"icon",
+				"tier1"
+			],
+			"rel": [
+				"icon"
+			],
+			"properties": {
+				"iconSetKey": "d2l-tier1:browser",
+				"imagePath": "https://s.brightspace.com/lib/bsi/10.8.8-daylight.5/images/tier1/browser.svg"
+			}
+		},
+		{
+			"class": [
+				"icon",
+				"tier2"
+			],
+			"rel": [
+				"icon"
+			],
+			"properties": {
+				"iconSetKey": "d2l-tier2:browser",
+				"imagePath": "https://s.brightspace.com/lib/bsi/10.8.8-daylight.5/images/tier2/browser.svg"
+			}
+		},
+		{
+			"class": [
+				"activity",
+				"link-activity",
+				"link-plain",
+				"external"
+			],
+			"rel": [
+				"about",
+				"item"
+			],
+			"properties": {
+				"title": "My Video Link",
+				"canDownload": true,
+				"canPrint": true
+			},
+			"links": [
+				{
+					"rel": [
+						"self"
+					],
+					"href": "https://TENANT.sequences.api.dev.brightspace.com/6609/activity/97665/link-activity"
+				},
+				{
+					"class": [
+						"adapted-none"
+					],
+					"rel": [
+						"about"
+					],
+					"href": "http://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1280_10MG.mp4"
+				},
+				{
+					"class": [
+						"view"
+					],
+					"rel": [
+						"alternate"
+					],
+					"href": "https://lms.d2l/d2l/le/content/6609/viewContent/97665/View"
+				}
+			]
+		}
+	],
+	"links": [
+		{
+			"rel": [
+				"self",
+				"describes"
+			],
+			"href": "data/l1-m2-activity11.json"
+		},
+		{
+			"rel": [
+				"https://api.brightspace.com/rels/organization"
+			],
+			"href": "data/sample2.json"
+		},
+		{
+			"rel": [
+				"prev"
+			],
+			"href": "data/l1-m2-activity10.json"
+		},
+		{
+			"rel": [
+				"next"
+			],
+			"href": "data/l1-m2-activity12.json"
+		},
+		{
+			"rel": [
+				"https://sequences.api.brightspace.com/rels/prev-activity"
+			],
+			"href": "data/l1-m2-activity10.json"
+		},
+		{
+			"rel": [
+				"https://sequences.api.brightspace.com/rels/next-activity"
+			],
+			"href": "data/l1-m2-activity12.json"
+		},
+		{
+			"rel": [
+				"https://sequences.api.brightspace.com/rels/sequence-root"
+			],
+			"href": "data/unit1.json"
+		},
+		{
+			"rel": [
+				"up"
+			],
+			"href": "data/l1-module2.json"
+		}
+	],
+	"rel": [
+		"item"
+	]
+}

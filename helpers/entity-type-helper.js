@@ -29,6 +29,17 @@ class EntityTypeHelper {
 	static get linkActivity() {
 		return 'link-activity';
 	}
+	static get extMimeType() {
+		return new Map([
+			['aac', D2LSequencesContentAudio.is],
+			['flac', D2LSequencesContentAudio.is],
+			['m4a', D2LSequencesContentAudio.is],
+			['mp3', D2LSequencesContentAudio.is],
+			['wav', D2LSequencesContentAudio.is],
+			['mp4', D2LSequencesContentVideo.is],
+			['webm', D2LSequencesContentVideo.is],
+		]);
+	}
 	static get mimeType() {
 		return new Map([
 			['application/pdf', D2LSequencesContentFilePdf.is],
@@ -48,6 +59,11 @@ class EntityTypeHelper {
 			['image/svg+xml', D2LSequencesContentImage.is],
 			['text/html', D2LSequencesContentFileHtml.is]
 		]);
+	}
+
+	static getEntityTypeByFilename(filename) {
+		const [ext] = (filename || '').split('.').reverse();
+		return EntityTypeHelper.extMimeType.get(ext);
 	}
 
 	static getEntityType(entity) {
@@ -108,13 +124,14 @@ class EntityTypeHelper {
 		const embedLink = linkActivity.getLinkByClass('embed');
 		const openInNewTab = linkActivity.hasClass('open-in-new-tab');
 		const isLorPdf = link.hasClass('adapted-lor-pdf');
+		const href = (link && link.href) || (embedLink && embedLink.href);
 		if (link && isLorPdf) {
 			return D2LSequencesContentFilePdf.is;
-		} else if (
-			(link && link.href.startsWith(window.location.protocol)) ||
-			(embedLink && embedLink.href.startsWith(window.location.protocol))
-		) {
-			return openInNewTab ? D2LSequencesContentLinkNewTab.is : D2LSequencesContentLink.is;
+		} else if (href && href.startsWith(window.location.protocol)) {
+			return EntityTypeHelper.getEntityTypeByFilename(href) || (openInNewTab
+				? D2LSequencesContentLinkNewTab.is
+				: D2LSequencesContentLink.is
+			);
 		} else {
 			return D2LSequencesContentLinkMixed.is;
 		}

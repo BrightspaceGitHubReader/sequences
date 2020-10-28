@@ -1,6 +1,8 @@
 import 'd2l-loading-spinner/d2l-loading-spinner.js';
 import '../mixins/d2l-sequences-automatic-completion-tracking-mixin.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import HypermediaHelper from '../helpers/hypermedia-helper.js';
+
 export class D2LSequencesContentLink extends D2L.Polymer.Mixins.Sequences.AutomaticCompletionTrackingMixin() {
 	static get template() {
 		return html`
@@ -38,7 +40,7 @@ export class D2LSequencesContentLink extends D2L.Polymer.Mixins.Sequences.Automa
 		return 'd2l-sequences-content-link';
 	}
 	static get contentClass() {
-		return 'link-activity';
+		return HypermediaHelper.linkContentClass;
 	}
 	static get properties() {
 		return {
@@ -79,25 +81,7 @@ export class D2LSequencesContentLink extends D2L.Polymer.Mixins.Sequences.Automa
 	}
 
 	_getLinkLocation(entity) {
-		try {
-			const linkActivity = entity.getSubEntityByClass(D2LSequencesContentLink.contentClass);
-			// if embed link exists, use that link
-			const embedASVLink = linkActivity.getLinkByClass('embed-asv');
-			if (embedASVLink !== undefined) {
-				return embedASVLink.href;
-			}
-
-			const embedLink = linkActivity.getLinkByClass('embed');
-			if (embedLink !== undefined) {
-				return embedLink.href;
-			}
-
-			const link = linkActivity.getLinkByRel('about');
-			return link.href;
-
-		} catch (e) {
-			return '';
-		}
+		return HypermediaHelper.getLinkLocation(entity);
 	}
 
 	/* eslint no-unused-vars: 0 */

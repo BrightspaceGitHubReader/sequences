@@ -171,9 +171,21 @@
 		},
 		{
 			"rel": [
+				"next"
+			],
+			"href": "data/l1-m2-activity11.json"
+		},
+		{
+			"rel": [
 				"https://sequences.api.brightspace.com/rels/prev-activity"
 			],
 			"href": "data/l1-m2-activity9.json"
+		},
+		{
+			"rel": [
+				"https://sequences.api.brightspace.com/rels/next-activity"
+			],
+			"href": "data/l1-m2-activity11.json"
 		},
 		{
 			"rel": [

@@ -25,6 +25,8 @@ import { D2LSequencesContentLinkMixed } from '../components/d2l-sequences-conten
 import { D2LSequencesContentLinkScorm } from '../components/d2l-sequences-content-link-scorm';
 import { D2LSequencesContentLinkOnedrive } from '../components/d2l-sequences-content-link-onedrive';
 import { D2LSequencesContentContentServiceLink } from '../components/d2l-sequences-content-content-service-link';
+import { D2LSequencesContentAudio } from '../components/d2l-sequences-content-audio';
+import { D2LSequencesContentVideo } from '../components/d2l-sequences-content-video';
 describe('d2l-sequences-content-router', () => {
 	describe('should handle a file activity for the mimetype:', () => {
 		it('application/pdf', async() => {
@@ -104,6 +106,14 @@ describe('d2l-sequences-content-router', () => {
 		it('should handle onedrive links', async() => {
 			const element = await loadFileWithDelay('data/activity-link-onedrive.json');
 			expect(element.shadowRoot.querySelector(D2LSequencesContentLinkOnedrive.is)).to.exist;
+		});
+		it('should handle audio links', async() => {
+			const element = await loadFileWithDelay('data/activity-link-audio.json');
+			expect(element.shadowRoot.querySelector(D2LSequencesContentAudio.is)).to.exist;
+		});
+		it('should handle video links', async() => {
+			const element = await loadFileWithDelay('data/activity-link-video.json');
+			expect(element.shadowRoot.querySelector(D2LSequencesContentVideo.is)).to.exist;
 		});
 	});
 });
