@@ -1,4 +1,5 @@
 import '@brightspace-ui-labs/media-player/media-player.js';
+import '@d2l/video/d2l-video.js';
 import '../mixins/d2l-sequences-automatic-completion-tracking-mixin.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import HypermediaHelper from '../helpers/hypermedia-helper.js';
@@ -7,13 +8,18 @@ export class D2LSequencesContentVideo extends D2L.Polymer.Mixins.Sequences.Autom
 	static get template() {
 		return html`
 		<style>
-			d2l-labs-media-player {
+			d2l-video, d2l-labs-media-player {
 				width: 100%;
 				max-height: calc(100% - 12px);
 				overflow: hidden;
 			}
 		</style>
-		<d2l-labs-media-player src="[[_fileLocation]]" auto-load=""></d2l-labs-media-player>
+		<template is="dom-if" if="[[useMediaPlayer]]">
+			<d2l-labs-media-player src="[[_fileLocation]]"></d2l-labs-media-player>
+		</template>
+		<template is="dom-if" if="[[!useMediaPlayer]]">
+			<d2l-video src="[[_fileLocation]]" auto-load=""></d2l-video>
+		</template>
 `;
 	}
 
@@ -35,6 +41,11 @@ export class D2LSequencesContentVideo extends D2L.Polymer.Mixins.Sequences.Autom
 			title: {
 				type: String,
 				computed: '_getTitle(entity)'
+			},
+			useMediaPlayer: {
+				type: Boolean,
+				reflectToAttribute: true,
+				value: false
 			}
 		};
 	}
