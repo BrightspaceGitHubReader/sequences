@@ -119,6 +119,12 @@
 		},
 		{
 			"rel": [
+				"next"
+			],
+			"href": "data/l1-m2-activity9.json"
+		},
+		{
+			"rel": [
 				"https://sequences.api.brightspace.com/rels/prev-activity"
 			],
 			"href": "data/l1-m2-activity7.json"
@@ -127,7 +133,7 @@
 			"rel": [
 				"https://sequences.api.brightspace.com/rels/next-activity"
 			],
-			"href": "data/l1-activity1.json"
+			"href": "data/l1-m2-activity9.json"
 		},
 		{
 			"rel": [

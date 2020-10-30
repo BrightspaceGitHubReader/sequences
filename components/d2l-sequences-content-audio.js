@@ -1,17 +1,25 @@
 import '../mixins/d2l-sequences-automatic-completion-tracking-mixin.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import '@brightspace-ui-labs/media-player/media-player.js';
 import '@d2l/audio/d2l-audio.js';
+import HypermediaHelper from '../helpers/hypermedia-helper.js';
+
 export class D2LSequencesContentAudio extends D2L.Polymer.Mixins.Sequences.AutomaticCompletionTrackingMixin() {
 	static get template() {
 		return html`
 		<style>
-			d2l-audio {
+			d2l-audio, d2l-labs-media-player {
 				width: 100%;
 				height: calc(100% - 12px);
 				overflow: hidden;
 			}
 		</style>
-		<d2l-audio src="[[_fileLocation]]" auto-load=""></d2l-audio>
+		<template is="dom-if" if="[[useMediaPlayer]]">
+			<d2l-labs-media-player src="[[_fileLocation]]"></d2l-labs-media-player>
+		</template>
+		<template is="dom-if" if="[[!useMediaPlayer]]">
+			<d2l-audio src="[[_fileLocation]]" auto-load=""></d2l-audio>
+		</template>
 `;
 	}
 
@@ -33,6 +41,11 @@ export class D2LSequencesContentAudio extends D2L.Polymer.Mixins.Sequences.Autom
 			title: {
 				type: String,
 				computed: '_getTitle(entity)'
+			},
+			useMediaPlayer: {
+				type: Boolean,
+				reflectToAttribute: true,
+				value: false
 			}
 		};
 	}
@@ -42,14 +55,7 @@ export class D2LSequencesContentAudio extends D2L.Polymer.Mixins.Sequences.Autom
 	}
 
 	_getFileLocation(entity) {
-		try {
-			const fileActivity = entity.getSubEntityByClass('file-activity');
-			const file = fileActivity.getSubEntityByClass('file');
-			const link = file.getLinkByClass('pdf') || file.getLinkByClass('embed') || file.getLinkByRel('alternate');
-			return link.href;
-		} catch (e) {
-			return '';
-		}
+		return HypermediaHelper.getFileLocation(entity);
 	}
 	_getTitle(entity) {
 		return entity && entity.properties && entity.properties.title || '';

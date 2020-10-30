@@ -1,0 +1,206 @@
+{
+	"class": [
+		"sequenced-activity"
+	],
+	"properties": {
+		"title": "My audio"
+	},
+	"entities": [
+		{
+			"class": [
+				"icon",
+				"tier1"
+			],
+			"rel": [
+				"icon"
+			],
+			"properties": {
+				"iconSetKey": "d2l-tier1:browser",
+				"imagePath": "https://s.brightspace.com/lib/bsi/10.8.8-daylight.5/images/tier1/browser.svg"
+			}
+		},
+		{
+			"class": [
+				"icon",
+				"tier2"
+			],
+			"rel": [
+				"icon"
+			],
+			"properties": {
+				"iconSetKey": "d2l-tier2:browser",
+				"imagePath": "https://s.brightspace.com/lib/bsi/10.8.8-daylight.5/images/tier2/browser.svg"
+			}
+		},
+		{
+			"class": [
+				"activity",
+				"file-activity"
+			],
+			"rel": [
+				"about"
+			],
+			"properties": {
+				"name": "My audio",
+				"title": "My audio"
+			},
+			"entities": [
+				{
+					"class": [
+						"file"
+					],
+					"rel": [
+						"about"
+					],
+					"properties": {
+						"name": "My file.html",
+						"title": "My file.html",
+						"type": "audio/mp3"
+					},
+					"entities": [
+						{
+							"class": [
+								"last-modified",
+								"date"
+							],
+							"rel": [
+								"item"
+							],
+							"properties": {
+								"date": "2016-05-06T00:08:10.640Z"
+							}
+						}
+					],
+					"links": [
+						{
+							"rel": [
+								"alternate"
+							],
+							"type": "audio/mp3",
+							"href": "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3"
+						},
+						{
+							"class": [
+								"view"
+							],
+							"rel": [
+								"alternate"
+							],
+							"type": "audio/mp3",
+							"href": "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3"
+						},
+						{
+							"class": [
+								"download"
+							],
+							"rel": [
+								"alternate"
+							],
+							"type": "audio/mp3",
+							"href": "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3"
+						}
+					]
+				},
+				{
+					"class": [
+						"completion",
+						"completed"
+					],
+					"rel": [
+						"item",
+						"https://api.brightspace.com/rels/completion"
+					],
+					"entities": [
+						{
+							"class": [
+								"auto",
+								"completion",
+								"date"
+							],
+							"rel": [
+								"item"
+							],
+							"properties": {
+								"date": "2018-10-19T14:15:31.777Z"
+							}
+						}
+					],
+					"links": [
+						{
+							"rel": [
+								"alternate"
+							],
+							"href": "https://ec84945a-cf39-4cfc-9ab6-19dba507e735.sequences.api.dev.brightspace.com/123187/activity/104501/completion"
+						}
+					]
+				}
+			],
+			"actions": [
+				{
+					"href": "https://b6aed422-b9f9-41dd-a542-59895e558b60.sequences.api.dev.brightspace.com/123187/activity/104501/view",
+					"name": "view-activity",
+					"method": "POST"
+				},
+				{
+					"href": "https://b6aed422-b9f9-41dd-a542-59895e558b60.sequences.api.dev.brightspace.com/123187/activity/104501/view",
+					"name": "view-activity-duration",
+					"method": "PUT"
+				}
+			]
+		}
+	],
+	"links": [
+		{
+			"rel": [
+				"self",
+				"describes"
+			],
+			"href": "data/l1-m2-activity10.json"
+		},
+		{
+			"rel": [
+				"https://api.brightspace.com/rels/organization"
+			],
+			"href": "data/sample2.json"
+		},
+		{
+			"rel": [
+				"prev"
+			],
+			"href": "data/l1-m2-activity9.json"
+		},
+		{
+			"rel": [
+				"next"
+			],
+			"href": "data/l1-m2-activity11.json"
+		},
+		{
+			"rel": [
+				"https://sequences.api.brightspace.com/rels/prev-activity"
+			],
+			"href": "data/l1-m2-activity9.json"
+		},
+		{
+			"rel": [
+				"https://sequences.api.brightspace.com/rels/next-activity"
+			],
+			"href": "data/l1-m2-activity11.json"
+		},
+		{
+			"rel": [
+				"https://sequences.api.brightspace.com/rels/sequence-root"
+			],
+			"href": "data/unit1.json"
+		},
+		{
+			"rel": [
+				"up"
+			],
+			"href": "data/l1-module2.json"
+		}
+	],
+	"rel": [
+		"https://sequences.api.brightspace.com/rels/sequence-root"
+	]
+}
