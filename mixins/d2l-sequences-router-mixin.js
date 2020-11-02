@@ -40,6 +40,11 @@ function RouterMixin(getEntityType) {
 					type: Boolean,
 					reflectToAttribute: true,
 					value: false
+				},
+				allowMediaDownloads: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false
 				}
 			};
 		}
@@ -106,6 +111,7 @@ function RouterMixin(getEntityType) {
 						this._contentElement.csRedirectPath = this.csRedirectPath;
 						this._contentElement.noRedirectQueryParamString = this.noRedirectQueryParamString;
 						this._contentElement.useMediaPlayer = this.useMediaPlayer;
+						this._contentElement.allowMediaDownloads = this.allowMediaDownloads;
 					}
 				}
 			);

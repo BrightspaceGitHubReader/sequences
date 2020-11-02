@@ -15,7 +15,7 @@ export class D2LSequencesContentAudio extends D2L.Polymer.Mixins.Sequences.Autom
 			}
 		</style>
 		<template is="dom-if" if="[[useMediaPlayer]]">
-			<d2l-labs-media-player src="[[_fileLocation]]"></d2l-labs-media-player>
+			<d2l-labs-media-player src="[[_fileLocation]]" allow-download="[[allowMediaDownloads]]"></d2l-labs-media-player>
 		</template>
 		<template is="dom-if" if="[[!useMediaPlayer]]">
 			<d2l-audio src="[[_fileLocation]]" auto-load=""></d2l-audio>
@@ -43,6 +43,11 @@ export class D2LSequencesContentAudio extends D2L.Polymer.Mixins.Sequences.Autom
 				computed: '_getTitle(entity)'
 			},
 			useMediaPlayer: {
+				type: Boolean,
+				reflectToAttribute: true,
+				value: false
+			},
+			allowMediaDownloads: {
 				type: Boolean,
 				reflectToAttribute: true,
 				value: false
