@@ -1,4 +1,5 @@
 import './d2l-sequences-module-name.js';
+import '@brightspace-ui/core/components/html-block/html-block.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -32,9 +33,10 @@ export class D2LSequencesContentModule extends mixinBehaviors([
 				<d2l-sequences-module-name href="[[href]]" token="[[token]]"></d2l-sequences-module-name>
 			</h1>
 
-			<p id="description">
-				[[description]]
-			</p>
+			<d2l-html-block>
+				<template id="description">
+				</template>
+			</d2l-html-block>
 		</div>
 `;
 	}
