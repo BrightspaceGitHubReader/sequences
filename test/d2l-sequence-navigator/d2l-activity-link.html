@@ -50,6 +50,24 @@
 			</template>
 		</test-fixture>
 
+		<test-fixture id="StartDateFixture">
+			<template>
+				<d2l-activity-link token="bamboozle" href="data/activity1.json"></d2l-activity-link>
+			</template>
+		</test-fixture>
+
+		<test-fixture id="EndDateFixture">
+			<template>
+				<d2l-activity-link token="bamboozle" href="data/activity2.json"></d2l-activity-link>
+			</template>
+		</test-fixture>
+
+		<test-fixture id="DateRangeFixture">
+			<template>
+				<d2l-activity-link token="bamboozle" href="data/activity3.json"></d2l-activity-link>
+			</template>
+		</test-fixture>
+
 		<script type="module">
 import '@polymer/polymer/polymer-legacy.js';
 import '../../d2l-sequence-navigator/d2l-activity-link.js';
@@ -138,6 +156,65 @@ describe('d2l-activity-link', () => {
 		it('should not have a d2l-icon element', ()=> {
 			const el = element.shadowRoot.querySelector('d2l-icon');
 			expect(el).not.to.exist;
+		});
+	});
+
+	describe('availability dates display', () => {
+		describe('start date', () => {
+			let element;
+			beforeEach(async() => {
+				element = await SirenFixture('data/activity1.json', fixture('StartDateFixture'));
+			});
+			it('should render correct availability text', () => {
+				const availDateText = element.shadowRoot.querySelector('#availability-dates');
+				expect(availDateText.innerText)
+					.to
+					.equal('Starts Oct 29');
+			});
+			it('should render correct availability tooltip', () => {
+				const availDateTooltip = element.shadowRoot.querySelector('d2l-tooltip');
+				expect(availDateTooltip.innerText)
+					.to
+					.equal('Availability starts Oct 29, 2020 11:00 AM');
+			});
+		});
+
+		describe('end date', () => {
+			let element;
+			beforeEach(async() => {
+				element = await SirenFixture('data/activity2.json', fixture('EndDateFixture'));
+			});
+			it('should render correct availability text', () => {
+				const availDateText = element.shadowRoot.querySelector('#availability-dates');
+				expect(availDateText.innerText)
+					.to
+					.equal('Ends Oct 31');
+			});
+			it('should render correct availability tooltip', () => {
+				const availDateTooltip = element.shadowRoot.querySelector('d2l-tooltip');
+				expect(availDateTooltip.innerText)
+					.to
+					.equal('Availability ends Oct 31, 2020 11:00 AM');
+			});
+		});
+
+		describe('date range', () => {
+			let element;
+			beforeEach(async() => {
+				element = await SirenFixture('data/activity3.json', fixture('DateRangeFixture'));
+			});
+			it('should render correct availability text', () => {
+				const availDateText = element.shadowRoot.querySelector('#availability-dates');
+				expect(availDateText.innerText)
+					.to
+					.equal('Oct 20 - Nov 11');
+			});
+			it('should render correct availability tooltip', () => {
+				const availDateTooltip = element.shadowRoot.querySelector('d2l-tooltip');
+				expect(availDateTooltip.innerText)
+					.to
+					.equal('Available: Oct 20, 2020 11:00 AM - Nov 11, 2020 11:00 AM');
+			});
 		});
 	});
 });

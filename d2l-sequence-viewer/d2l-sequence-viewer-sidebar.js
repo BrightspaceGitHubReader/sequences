@@ -33,7 +33,7 @@ class D2LSequenceViewerSidebar extends mixinBehaviors([
 				justify-content: center;
 				align-items: center;
 				background-color: var(--d2l-asv-primary-color);
-				min-width: 250px;
+				min-width: 238px;
 				padding: 8px 20px;
 			}
 			.m-module-heading:hover {

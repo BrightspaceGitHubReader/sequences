@@ -2,10 +2,12 @@ import './d2l-inner-module.js';
 import './d2l-activity-link.js';
 import { CompletionStatusMixin } from '../mixins/completion-status-mixin.js';
 import { PolymerASVLaunchMixin } from '../mixins/polymer-asv-launch-mixin.js';
+import { formatAvailabilityDateString, createDateFromObj } from '../util/util.js';
 import '@brightspace-ui-labs/accordion/accordion.js';
 import '@brightspace-ui/core/components/colors/colors.js';
 import '@brightspace-ui/core/components/icons/icon.js';
 import '@brightspace-ui/core/components/button/button-subtle.js';
+import '@brightspace-ui/core/components/tooltip/tooltip.js';
 import 'd2l-offscreen/d2l-offscreen.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 /*
@@ -115,14 +117,19 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				padding-top: 6px;
 			}
 
-			#startDate {
+			div.date-container {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			#due-date, #availability-dates {
 				color: var(--d2l-outer-module-text-color, inherit);
-				font-size: var(--d2l-body-small-text_-_font-size);
+				font-size: 0.65rem;
 				font-weight: var(--d2l-body-small-text_-_font-weight);
 				line-height: var(--d2l-body-small-text_-_line-height);
 			}
 
-			:host([show-loading-skeleton]) #startDate {
+			:host([show-loading-skeleton]) .date-container {
 				display: none;
 			}
 
@@ -218,6 +225,10 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				color: var(--d2l-color-celestine-minus-1);
 			}
 
+			d2l-tooltip {
+				color: white !important;
+			}
+
 			:host([header-focused][accordion-state="closed"]) #header-container {
 				background-color: var(--d2l-color-gypsum);
 				box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--d2l-color-celestine);
@@ -282,7 +293,14 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 							<d2l-icon id="expand-icon" icon="[[_iconName]]"></d2l-icon>
 						</div>
 					</div>
-					<div id ="startDate">[[startDate]]</div>
+					<div class="date-container">
+						<div id="due-date">[[_dueDate]]</div>
+						<div id="availability-dates">[[_availabilityDateString]]</div>
+						<d2l-tooltip
+							for="availability-dates"
+							boundary="[[_availDateTooltipBoundary]]"
+						>[[_availabilityDateTooltip]]</d2l-tooltip>
+					</div>
 				</div>
 			</div>
 			<template is="dom-if" if="[[_getShowModuleChildren(_moduleStartOpen, accordionState)]]">
@@ -379,9 +397,29 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				type: Boolean,
 				value: false
 			},
-			startDate: {
+			_dueDate: {
 				type: String,
-				computed: 'getFormattedDate(entity)'
+				value: '',
+				computed: '_getDueDateText(entity.properties)'
+			},
+			_availabilityDateString: {
+				type: String,
+				value: '',
+				computed: '_getAvailabilityDateString(entity.properties)'
+			},
+			_availabilityDateTooltip: {
+				type: String,
+				value: '',
+				computed: '_getAvailabilityDateTooltip(entity.properties)'
+			},
+			_availDateTooltipBoundary: {
+				type: Object,
+				value: {
+					top: 18,
+					bottom: 18,
+					right: 18,
+					left: 18
+				}
 			},
 			showLoadingSkeleton: {
 				type: Boolean,
@@ -603,34 +641,36 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		}
 	}
 
-	getFormattedDate(entity) {
-
-		const currentDate = new Date();
-		let startDate;
-		let result = '';
-		if (entity && entity.properties && entity.properties.startDate) {
-			const startYear = entity.properties.startDate.Year;
-			const startMonth = entity.properties.startDate.Month - 1;
-			const startDay = entity.properties.startDate.Day;
-			startDate = new Date(startYear, startMonth, startDay);
-		}
-		let dueDate;
-		if (entity && entity.properties && entity.properties.dueDate) {
-			const dueYear = entity.properties.dueDate.Year;
-			const dueMonth = entity.properties.dueDate.Month - 1;
-			const dueDay = entity.properties.dueDate.Day;
-			dueDate = new Date(dueYear, dueMonth, dueDay);
+	_getDueDateText(properties) {
+		if (!properties) {
+			return;
 		}
 
-		if (startDate && startDate > currentDate) {
-			result = this.formatDate(startDate, {format: 'medium'});
-			return this.localize('sequenceNavigator.starts', 'startDate', result);
+		const { dueDate } = properties;
+
+		if (!dueDate) {
+			return;
 		}
-		if (dueDate) {
-			result = this.formatDate(dueDate,  {format: 'medium'});
-			return this.localize('sequenceNavigator.due', 'dueDate', result);
+		const actualDueDate = createDateFromObj(dueDate);
+		const dueDateString = this.formatDate(actualDueDate,  {format: 'medium'});
+
+		return this.localize('sequenceNavigator.due', 'dueDate', dueDateString);
+	}
+
+	_getAvailabilityDateString(properties) {
+		if (!properties) {
+			return;
 		}
-		return result;
+		const { startDate, endDate } = properties;
+		return formatAvailabilityDateString(this.localize, startDate, endDate);
+	}
+
+	_getAvailabilityDateTooltip(properties) {
+		if (!properties) {
+			return;
+		}
+		const { startDate, endDate } = properties;
+		return formatAvailabilityDateString(this.localize, startDate, endDate, true);
 	}
 
 	_getHideModuleDescription(entity) {

@@ -1,3 +1,5 @@
+import { formatDate, formatDateTime } from '@brightspace-ui/intl/lib/dateTime.js';
+
 function isMobile() {
 	return /iP[ao]d|iPhone|Android|Windows (?:Phone|CE)|PlayBook|BlackBerry|Vodafone|Mobile/.test(window.navigator.userAgent);
 }
@@ -50,10 +52,65 @@ function redirectCS(redirectCs, csRedirectPath, noRedirectQueryParamString) {
 	}
 }
 
+function createDateFromObj(dateObj) {
+	if (!dateObj) {
+		return null;
+	}
+
+	return new Date(
+		dateObj.Year,
+		dateObj.Month - 1,
+		dateObj.Day,
+		dateObj.Hour,
+		dateObj.Minute,
+		dateObj.Second,
+		dateObj.Millisecond
+	);
+}
+
+function formatAvailabilityDateString(localize, startDateObj, endDateObj, forTooltip) {
+	const tooltipText = forTooltip ? '.tooltip' : '';
+	const format = forTooltip ? 'medium' : 'shortMonthDay';
+	const formatFunction = forTooltip ? formatDateTime : formatDate;
+
+	const startDate = createDateFromObj(startDateObj);
+	const endDate = createDateFromObj(endDateObj);
+
+	if (startDate && endDate) {
+		return localize(
+			`sequenceNavigator.dateRange${tooltipText}`,
+			'startDate',
+			formatFunction(startDate, { format }),
+			'endDate',
+			formatFunction(endDate, { format })
+		);
+	}
+
+	if (startDate) {
+		return localize(
+			`sequenceNavigator.starts${tooltipText}`,
+			'startDate',
+			formatFunction(startDate, { format })
+		);
+	}
+
+	if (endDate) {
+		return localize(
+			`sequenceNavigator.ends${tooltipText}`,
+			'endDate',
+			formatFunction(endDate, { format })
+		);
+	}
+
+	return '';
+}
+
 export {
 	isMobile,
 	isIOS,
 	isSafari,
 	parseUrlQueryParameters,
-	redirectCS
+	redirectCS,
+	createDateFromObj,
+	formatAvailabilityDateString
 };

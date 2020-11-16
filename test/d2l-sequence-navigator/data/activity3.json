@@ -1,6 +1,48 @@
 {
 	"properties": {
-		"title": "Exempted Assignment"
+		"title": "Exempted Assignment",
+		"endDate": {
+			"Day": 11,
+			"DayOfWeek": 3,
+			"Hour": 11,
+			"Millisecond": 0,
+			"Minute": 0,
+			"Month": 11,
+			"Second": 0,
+			"TimeOfDay": {
+				"Hour": 11,
+				"Millisecond": 0,
+				"Minute": 0,
+				"Second": 0,
+				"Ticks": 396000000000,
+				"TotalHours": 11,
+				"TotalMilliseconds": 39600000,
+				"TotalMinutes": 660,
+				"TotalSeconds": 39600
+			},
+			"Year": 2020
+		},
+		"startDate": {
+			"Day": 20,
+			"DayOfWeek": 2,
+			"Hour": 11,
+			"Millisecond": 0,
+			"Minute": 0,
+			"Month": 10,
+			"Second": 0,
+			"TimeOfDay": {
+				"Hour": 11,
+				"Millisecond": 0,
+				"Minute": 0,
+				"Second": 0,
+				"Ticks": 396000000000,
+				"TotalHours": 11,
+				"TotalMilliseconds": 39600000,
+				"TotalMinutes": 660,
+				"TotalSeconds": 39600
+			},
+			"Year": 2020
+		}
 	},
 	"entities": [
 		{

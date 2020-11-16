@@ -1,9 +1,11 @@
 import { CompletionStatusMixin } from '../mixins/completion-status-mixin.js';
 import { PolymerASVLaunchMixin } from '../mixins/polymer-asv-launch-mixin.js';
+import { formatAvailabilityDateString } from '../util/util.js';
 import './d2l-completion-status.js';
 import './d2l-completion-requirement.js';
 import '@brightspace-ui/core/components/colors/colors.js';
 import '@brightspace-ui/core/components/icons/icon.js';
+import '@brightspace-ui/core/components/tooltip/tooltip.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 /*
 @memberOf window.D2L.Polymer.Mixins;
@@ -62,14 +64,17 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 			}
 
 			#content-container {
-				display: flex;
 				flex: 1;
 				cursor: pointer;
-				justify-content: space-between;
 				padding: 12px;
-				align-items: center;
 				border-radius: 6px;
 				border: 2px solid transparent;
+			}
+
+			#title-and-completion {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
 			}
 
 			:host([is-current-activity]) #content-container,
@@ -150,6 +155,18 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				color: var(--d2l-color-ferrite);
 			}
 
+			#date-container {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			#due-date, #availability-dates {
+				color: var(--d2l-color-ferrite);
+				font-size: 0.65rem;
+				font-weight: var(--d2l-body-small-text_-_font-weight);
+				line-height: var(--d2l-body-small-text_-_line-height);
+			}
+
 			@keyframes loadingShimmer {
 				0% { background-color: var(--d2l-color-sylvite); }
 				50% { background-color: var(--d2l-color-regolith); }
@@ -180,19 +197,29 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 			</template>
 			<template is="dom-if" if="[[!showLoadingSkeleton]]">
 				<div id="content-container" on-click="setCurrent" tabindex="0">
-					<div id="title-container">
-						<template is="dom-if" if="[[hasIcon]]">
-							<d2l-icon icon="[[_getIconSetKey(entity)]]"></d2l-icon>
-						</template>
-						<div class="d2l-activity-link-title">
-							<a class$="[[completionRequirementClass]]" href="javascript:void(0)" tabindex="-1">
-								[[entity.properties.title]]
-							</a>
-							<d2l-completion-requirement href="[[href]]" token="[[token]]">
-							</d2l-completion-requirement>
+					<div id="title-and-completion">
+						<div id="title-container">
+							<template is="dom-if" if="[[hasIcon]]">
+								<d2l-icon icon="[[_getIconSetKey(entity)]]"></d2l-icon>
+							</template>
+							<div class="d2l-activity-link-title">
+								<a class$="[[completionRequirementClass]]" href="javascript:void(0)" tabindex="-1">
+									[[entity.properties.title]]
+								</a>
+								<d2l-completion-requirement href="[[href]]" token="[[token]]">
+								</d2l-completion-requirement>
+							</div>
 						</div>
+						<d2l-completion-status href="[[href]]" token="[[token]]"></d2l-completion-status>
 					</div>
-					<d2l-completion-status href="[[href]]" token="[[token]]"></d2l-completion-status>
+					<div id="date-container">
+						<div id="due-date"></div>
+						<div id="availability-dates">[[_availabilityDateString]]</div>
+						<d2l-tooltip
+							for="availability-dates"
+							boundary="[[_availDateTooltipBoundary]]"
+						>[[_availabilityDateTooltip]]</d2l-tooltip>
+					</div>
 				</div>
 			</template>
 		</div>
@@ -239,6 +266,25 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				type: Boolean,
 				reflectToAttribute: true,
 				computed: '_getIsCurrentActivity(entity, currentActivity)'
+			},
+			_availDateTooltipBoundary: {
+				type: Object,
+				value: {
+					top: 18,
+					bottom: 18,
+					right: 18,
+					left: 18
+				}
+			},
+			_availabilityDateString: {
+				type: String,
+				value: '',
+				computed: '_getAvailabilityDateString(entity.properties)'
+			},
+			_availabilityDateTooltip: {
+				type: String,
+				value: '',
+				computed: '_getAvailabilityDateTooltip(entity.properties)'
 			}
 		};
 	}
@@ -303,6 +349,22 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		if (entity) {
 			this.dispatchEvent(new CustomEvent('d2l-content-entity-loaded', {detail: { href: this.href}}));
 		}
+	}
+
+	_getAvailabilityDateString(properties) {
+		if (!properties) {
+			return;
+		}
+		const { startDate, endDate } = properties;
+		return formatAvailabilityDateString(this.localize, startDate, endDate);
+	}
+
+	_getAvailabilityDateTooltip(properties) {
+		if (!properties) {
+			return;
+		}
+		const { startDate, endDate } = properties;
+		return formatAvailabilityDateString(this.localize, startDate, endDate, true);
 	}
 }
 customElements.define(D2LActivityLink.is, D2LActivityLink);

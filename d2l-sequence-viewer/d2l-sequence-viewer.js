@@ -75,7 +75,6 @@ class D2LSequenceViewer extends mixinBehaviors([
 					flex: 1;
 					max-width: var(--sidebar-max-width);
 					position: relative;
-					overflow: hidden;
 					background: white;
 					border: 1px solid var(--d2l-color-mica);
 					border-top: none;
@@ -92,6 +91,9 @@ class D2LSequenceViewer extends mixinBehaviors([
 					-moz-transition: max-width 0.4s ease-in-out;
 					-o-transition: max-width 0.4s ease-in-out;
 					transition: max-width 0.4s ease-in-out;
+				}
+				#sidebar-container.hide-overflow {
+					overflow: hidden;
 				}
 				#viewframe {
 					/* This extra 12px comes from sequences
@@ -252,7 +254,7 @@ class D2LSequenceViewer extends mixinBehaviors([
 			</div>
 		</d2l-sequence-viewer-header>
 		<div id="view-container">
-			<div id="sidebar-container" class="offscreen">
+			<div id="sidebar-container" class="offscreen hide-overflow">
 				<d2l-sequence-viewer-sidebar
 					href="{{href}}"
 					token="[[token]]"
@@ -435,6 +437,7 @@ class D2LSequenceViewer extends mixinBehaviors([
 		this._resizeListener = this._resizeElements.bind(this);
 		this._blurListener = this._closeSlidebarOnFocusContent.bind(this);
 		this._onPopStateListener = this._onPopState.bind(this);
+		this._onSidebarTransitionEnd = this._onSidebarTransitionEnd.bind(this);
 	}
 	connectedCallback() {
 		super.connectedCallback();
@@ -444,12 +447,18 @@ class D2LSequenceViewer extends mixinBehaviors([
 		window.addEventListener('blur', this._blurListener);
 		window.addEventListener('popstate', this._onPopStateListener);
 		window.addEventListener('resize', this._resizeListener);
+
+		const sidebarContainer = this.shadowRoot.getElementById('sidebar-container');
+		sidebarContainer.addEventListener('transitionend', this._onSidebarTransitionEnd);
 	}
 	disconnectedCallback() {
 		super.disconnectedCallback();
 		window.removeEventListener('blur', this._blurListener);
 		window.removeEventListener('popstate', this._onPopStateListener);
 		window.removeEventListener('resize', this._resizeListener);
+
+		const sidebarContainer = this.shadowRoot.getElementById('sidebar-container');
+		sidebarContainer.removeEventListener('transitionend', this._onSidebarTransitionEnd);
 	}
 
 	async _onEntityChanged(entity) {
@@ -670,6 +679,7 @@ class D2LSequenceViewer extends mixinBehaviors([
 		}
 		viewframeFogOfWar.classList.remove('show');
 		sidebarContainer.classList.add('offscreen');
+		sidebarContainer.classList.add('hide-overflow');
 		this._sideNavIconName = 'tier1:menu-hamburger';
 		this.isSidebarClosed = true;
 
@@ -704,6 +714,14 @@ class D2LSequenceViewer extends mixinBehaviors([
 			this._docReaderText = this.localize('closeDocReader');
 		} else {
 			this._docReaderText = this.localize('openDocReader');
+		}
+	}
+
+	_onSidebarTransitionEnd() {
+		const sidebarContainer = this.shadowRoot.getElementById('sidebar-container');
+
+		if (!this.isSidebarClosed) {
+			sidebarContainer.classList.remove('hide-overflow');
 		}
 	}
 }

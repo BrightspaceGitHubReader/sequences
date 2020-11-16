@@ -67,6 +67,7 @@
     "@brightspace-ui-labs/accordion": "^2.3.0",
     "@brightspace-ui-labs/media-player": "^1",
     "@brightspace-ui/core": "^1",
+    "@brightspace-ui/intl": "^3.1.0",
     "@d2l/audio": "Brightspace/d2l-audio#semver:^3",
     "@d2l/video": "Brightspace/d2l-video#semver:^2",
     "@polymer/iron-a11y-announcer": "^3.1.0",

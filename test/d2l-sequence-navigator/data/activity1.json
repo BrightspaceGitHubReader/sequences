@@ -1,6 +1,27 @@
 {
 	"properties": {
-		"title": "Quiz: History of Algebra"
+		"title": "Quiz: History of Algebra",
+		"startDate": {
+			"Day": 29,
+			"DayOfWeek": 4,
+			"Hour": 11,
+			"Millisecond": 0,
+			"Minute": 0,
+			"Month": 10,
+			"Second": 0,
+			"TimeOfDay": {
+				"Hour": 11,
+				"Millisecond": 0,
+				"Minute": 0,
+				"Second": 0,
+				"Ticks": 396000000000,
+				"TotalHours": 11,
+				"TotalMilliseconds": 39600000,
+				"TotalMinutes": 660,
+				"TotalSeconds": 39600
+			},
+			"Year": 2020
+		}
 	},
 	"entities": [
 		{
