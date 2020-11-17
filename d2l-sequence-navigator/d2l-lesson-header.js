@@ -224,7 +224,7 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 					</template>
 				</div>
 				<div class="[[_getDateContainerClasses(_showDates)]]">
-					<div id="due-date"></div>
+					<div id="due-date-time"></div>
 					<div id="availability-dates">[[_availabilityDateString]]</div>
 					<d2l-tooltip for="availability-dates">[[_availabilityDateTooltip]]</d2l-tooltip>
 				</div>

@@ -122,7 +122,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				justify-content: space-between;
 			}
 
-			#due-date, #availability-dates {
+			#due-date-time, #availability-dates {
 				color: var(--d2l-outer-module-text-color, inherit);
 				font-size: 0.65rem;
 				font-weight: var(--d2l-body-small-text_-_font-weight);
@@ -294,7 +294,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 						</div>
 					</div>
 					<div class="date-container">
-						<div id="due-date">[[_dueDate]]</div>
+						<div id="due-date-time">[[_dueDateTime]]</div>
 						<div id="availability-dates">[[_availabilityDateString]]</div>
 						<d2l-tooltip
 							for="availability-dates"
@@ -397,10 +397,10 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				type: Boolean,
 				value: false
 			},
-			_dueDate: {
+			_dueDateTime: {
 				type: String,
 				value: '',
-				computed: '_getDueDateText(entity.properties)'
+				computed: '_getDueDateTimeText(entity.properties)'
 			},
 			_availabilityDateString: {
 				type: String,
@@ -641,20 +641,20 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		}
 	}
 
-	_getDueDateText(properties) {
+	_getDueDateTimeText(properties) {
 		if (!properties) {
 			return;
 		}
 
-		const { dueDate } = properties;
+		const dueDateTime  = properties.dueDate;
 
-		if (!dueDate) {
+		if (!dueDateTime) {
 			return;
 		}
-		const actualDueDate = createDateFromObj(dueDate);
-		const dueDateString = this.formatDate(actualDueDate,  {format: 'medium'});
+		const actualDueDateTime = createDateFromObj(dueDateTime);
+		const dueDateTimeString = this.formatDate(actualDueDateTime,  {format: 'medium'});
 
-		return this.localize('sequenceNavigator.due', 'dueDate', dueDateString);
+		return this.localize('sequenceNavigator.due', 'dueDateTime', dueDateTimeString);
 	}
 
 	_getAvailabilityDateString(properties) {

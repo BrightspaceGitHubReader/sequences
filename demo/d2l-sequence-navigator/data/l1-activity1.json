@@ -5,7 +5,7 @@
 	"properties": {
 		"title": "Quiz",
 		"overDue": true,
-		"dueDate": {
+		"dueDateTime": {
 			"Year": 2019,
 			"Month": 3,
 			"Day": 7,

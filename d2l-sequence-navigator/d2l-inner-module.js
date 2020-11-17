@@ -99,7 +99,7 @@ class D2LInnerModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				color: white;
 			}
 
-			#due-date, #availability-dates {
+			#due-date-time, #availability-dates {
 				color: var(--d2l-color-ferrite);
 				font-size: 0.65rem;
 				font-weight: var(--d2l-body-small-text_-_font-weight);
@@ -164,7 +164,7 @@ class D2LInnerModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				</span>
 			</div>
 			<div id="date-container">
-				<div id="due-date">[[_dueDate]]</div>
+				<div id="due-date-time">[[_dueDateTime]]</div>
 				<div id="availability-dates">[[_availabilityDateString]]</div>
 				<d2l-tooltip
 					for="availability-dates"

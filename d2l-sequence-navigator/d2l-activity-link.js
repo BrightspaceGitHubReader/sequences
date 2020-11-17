@@ -160,7 +160,7 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				justify-content: space-between;
 			}
 
-			#due-date, #availability-dates {
+			#due-date-time, #availability-dates {
 				color: var(--d2l-color-ferrite);
 				font-size: 0.65rem;
 				font-weight: var(--d2l-body-small-text_-_font-weight);
@@ -213,7 +213,7 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 						<d2l-completion-status href="[[href]]" token="[[token]]"></d2l-completion-status>
 					</div>
 					<div id="date-container">
-						<div id="due-date"></div>
+						<div id="due-date-time"></div>
 						<div id="availability-dates">[[_availabilityDateString]]</div>
 						<d2l-tooltip
 							for="availability-dates"
