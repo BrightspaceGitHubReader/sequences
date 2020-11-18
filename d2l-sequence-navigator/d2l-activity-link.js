@@ -1,6 +1,6 @@
 import { CompletionStatusMixin } from '../mixins/completion-status-mixin.js';
 import { PolymerASVLaunchMixin } from '../mixins/polymer-asv-launch-mixin.js';
-import { formatAvailabilityDateString } from '../util/util.js';
+import { formatAvailabilityDateString, createDateFromObj } from '../util/util.js';
 import './d2l-completion-status.js';
 import './d2l-completion-requirement.js';
 import '@brightspace-ui/core/components/colors/colors.js';
@@ -163,7 +163,6 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 			#due-date-time, #availability-dates {
 				color: var(--d2l-color-ferrite);
 				font-size: 0.65rem;
-				font-weight: var(--d2l-body-small-text_-_font-weight);
 				line-height: var(--d2l-body-small-text_-_line-height);
 			}
 
@@ -213,7 +212,7 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 						<d2l-completion-status href="[[href]]" token="[[token]]"></d2l-completion-status>
 					</div>
 					<div id="date-container">
-						<div id="due-date-time"></div>
+						<div id="due-date-time">[[_dueDateTimeString]]</div>
 						<div id="availability-dates">[[_availabilityDateString]]</div>
 						<d2l-tooltip
 							for="availability-dates"
@@ -266,6 +265,11 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				type: Boolean,
 				reflectToAttribute: true,
 				computed: '_getIsCurrentActivity(entity, currentActivity)'
+			},
+			_dueDateTimeString: {
+				type: String,
+				value: '',
+				computed: '_getDueDateTimeString(entity.properties)'
 			},
 			_availDateTooltipBoundary: {
 				type: Object,
@@ -349,6 +353,22 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		if (entity) {
 			this.dispatchEvent(new CustomEvent('d2l-content-entity-loaded', {detail: { href: this.href}}));
 		}
+	}
+
+	_getDueDateTimeString(properties) {
+		if (!properties) {
+			return;
+		}
+
+		const dueDateTime  = properties.dueDate;
+
+		if (!dueDateTime) {
+			return;
+		}
+		const actualDueDateTime = createDateFromObj(dueDateTime);
+		const dueDateTimeString = this.formatDateTime(actualDueDateTime,  {format: 'medium'});
+
+		return this.localize('sequenceNavigator.due', 'dueDateTime', dueDateTimeString);
 	}
 
 	_getAvailabilityDateString(properties) {

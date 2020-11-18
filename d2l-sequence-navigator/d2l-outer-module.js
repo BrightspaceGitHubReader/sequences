@@ -123,9 +123,8 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 			}
 
 			#due-date-time, #availability-dates {
-				color: var(--d2l-outer-module-text-color, inherit);
+				color: var(--d2l-color-ferrite);
 				font-size: 0.65rem;
-				font-weight: var(--d2l-body-small-text_-_font-weight);
 				line-height: var(--d2l-body-small-text_-_line-height);
 			}
 
@@ -221,7 +220,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				border-radius: 2px;
 			}
 
-			#header-container:hover * {
+			#header-container:hover #top-header-container * {
 				color: var(--d2l-color-celestine-minus-1);
 			}
 
@@ -254,7 +253,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				background-color: var(--d2l-color-gypsum);
 			}
 
-			:host([header-active]) #header-container * {
+			:host([header-active]) #top-header-container * {
 				color: var(--d2l-color-celestine-minus-1);
 			}
 		</style>
@@ -294,7 +293,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 						</div>
 					</div>
 					<div class="date-container">
-						<div id="due-date-time">[[_dueDateTime]]</div>
+						<div id="due-date-time">[[_dueDateTimeString]]</div>
 						<div id="availability-dates">[[_availabilityDateString]]</div>
 						<d2l-tooltip
 							for="availability-dates"
@@ -397,10 +396,10 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				type: Boolean,
 				value: false
 			},
-			_dueDateTime: {
+			_dueDateTimeString: {
 				type: String,
 				value: '',
-				computed: '_getDueDateTimeText(entity.properties)'
+				computed: '_getDueDateTimeString(entity.properties)'
 			},
 			_availabilityDateString: {
 				type: String,
@@ -641,7 +640,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		}
 	}
 
-	_getDueDateTimeText(properties) {
+	_getDueDateTimeString(properties) {
 		if (!properties) {
 			return;
 		}
@@ -652,7 +651,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 			return;
 		}
 		const actualDueDateTime = createDateFromObj(dueDateTime);
-		const dueDateTimeString = this.formatDate(actualDueDateTime,  {format: 'medium'});
+		const dueDateTimeString = this.formatDateTime(actualDueDateTime,  {format: 'medium'});
 
 		return this.localize('sequenceNavigator.due', 'dueDateTime', dueDateTimeString);
 	}
