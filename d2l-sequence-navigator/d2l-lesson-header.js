@@ -187,6 +187,7 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 		}
 
 		div.date-container {
+			padding-top: 4px;
 			display: flex;
 			justify-content: space-between;
 		}
@@ -223,7 +224,7 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 						</d2l-meter-circle>
 					</template>
 				</div>
-				<div class="[[_getDateContainerClasses(_showDates)]]">
+				<div class$="[[_getDateContainerClasses(_showDates)]]">
 					<div id="due-date"></div>
 					<div id="availability-dates">[[_availabilityDateString]]</div>
 					<d2l-tooltip for="availability-dates">[[_availabilityDateTooltip]]</d2l-tooltip>
