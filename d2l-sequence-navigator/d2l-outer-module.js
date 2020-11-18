@@ -128,6 +128,15 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				line-height: var(--d2l-body-small-text_-_line-height);
 			}
 
+			@media (max-width: 430px) {
+				div.date-container {
+					flex-direction: column;
+				}
+				#availability-dates {
+					text-align: end;
+				}
+			}
+
 			:host([show-loading-skeleton]) .date-container {
 				display: none;
 			}

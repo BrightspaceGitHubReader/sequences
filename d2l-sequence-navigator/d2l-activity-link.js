@@ -166,6 +166,15 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				line-height: var(--d2l-body-small-text_-_line-height);
 			}
 
+			@media (max-width: 525px) {
+				#date-container {
+					flex-direction: column;
+				}
+				#availability-dates {
+					text-align: end;
+				}
+			}
+
 			@keyframes loadingShimmer {
 				0% { background-color: var(--d2l-color-sylvite); }
 				50% { background-color: var(--d2l-color-regolith); }

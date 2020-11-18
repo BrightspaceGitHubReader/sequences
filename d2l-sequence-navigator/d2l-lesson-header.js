@@ -203,6 +203,15 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 			font-size: 0.65rem;
 			line-height: var(--d2l-body-small-text_-_line-height);
 		}
+
+		@media (max-width: 415px) {
+			div.date-container {
+				flex-direction: column;
+			}
+			#availability-dates {
+				text-align: end;
+			}
+		}
 		</style>
 
 		<siren-entity href="[[_moduleProgressHref]]" token="[[token]]" entity="{{_moduleProgress}}"></siren-entity>

@@ -105,6 +105,15 @@ class D2LInnerModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				line-height: var(--d2l-body-small-text_-_line-height);
 			}
 
+			@media (max-width: 460px) {
+				#date-container {
+					flex-direction: column;
+				}
+				#availability-dates {
+					text-align: end;
+				}
+			}
+
 			ol {
 				list-style-type: none;
 				border-collapse: collapse;
