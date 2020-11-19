@@ -105,6 +105,16 @@ function formatAvailabilityDateString(localize, startDateObj, endDateObj, forToo
 	return '';
 }
 
+function getDueDateTimeString(dueDateTime, localize) {
+	if (!dueDateTime) {
+		return;
+	}
+	const actualDueDateTime = createDateFromObj(dueDateTime);
+	const dueDateTimeString = formatDateTime(actualDueDateTime,  {format: 'medium'});
+
+	return localize('sequenceNavigator.due', 'dueDateTime', dueDateTimeString);
+}
+
 export {
 	isMobile,
 	isIOS,
@@ -112,5 +122,6 @@ export {
 	parseUrlQueryParameters,
 	redirectCS,
 	createDateFromObj,
-	formatAvailabilityDateString
+	formatAvailabilityDateString,
+	getDueDateTimeString
 };

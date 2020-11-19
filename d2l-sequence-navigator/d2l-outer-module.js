@@ -2,7 +2,7 @@ import './d2l-inner-module.js';
 import './d2l-activity-link.js';
 import { CompletionStatusMixin } from '../mixins/completion-status-mixin.js';
 import { PolymerASVLaunchMixin } from '../mixins/polymer-asv-launch-mixin.js';
-import { formatAvailabilityDateString, createDateFromObj } from '../util/util.js';
+import { formatAvailabilityDateString, getDueDateTimeString } from '../util/util.js';
 import '@brightspace-ui-labs/accordion/accordion.js';
 import '@brightspace-ui/core/components/colors/colors.js';
 import '@brightspace-ui/core/components/icons/icon.js';
@@ -653,16 +653,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		if (!properties) {
 			return;
 		}
-
-		const dueDateTime  = properties.dueDate;
-
-		if (!dueDateTime) {
-			return;
-		}
-		const actualDueDateTime = createDateFromObj(dueDateTime);
-		const dueDateTimeString = this.formatDateTime(actualDueDateTime,  {format: 'medium'});
-
-		return this.localize('sequenceNavigator.due', 'dueDateTime', dueDateTimeString);
+		return getDueDateTimeString(properties.dueDate, this.localize);
 	}
 
 	_getAvailabilityDateString(properties) {

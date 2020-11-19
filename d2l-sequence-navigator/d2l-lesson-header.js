@@ -4,7 +4,7 @@
 */
 import { CompletionStatusMixin } from '../mixins/completion-status-mixin.js';
 import { ASVFocusWithinMixin } from '../mixins/asv-focus-within-mixin.js';
-import { formatAvailabilityDateString, createDateFromObj } from '../util/util.js';
+import { formatAvailabilityDateString, getDueDateTimeString } from '../util/util.js';
 import 'd2l-offscreen/d2l-offscreen.js';
 import '@brightspace-ui/core/components/colors/colors.js';
 import 'd2l-typography/d2l-typography.js';
@@ -436,16 +436,7 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 		if (!properties) {
 			return;
 		}
-
-		const dueDateTime  = properties.dueDate;
-
-		if (!dueDateTime) {
-			return;
-		}
-		const actualDueDateTime = createDateFromObj(dueDateTime);
-		const dueDateTimeString = this.formatDateTime(actualDueDateTime,  {format: 'medium'});
-
-		return this.localize('sequenceNavigator.due', 'dueDateTime', dueDateTimeString);
+		return getDueDateTimeString(properties.dueDate, this.localize);
 	}
 
 	_getAvailabilityDateString(properties) {
