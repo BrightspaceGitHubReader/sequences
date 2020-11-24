@@ -303,7 +303,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 					</div>
 					<div class="date-container">
 						<div id="due-date-time">[[_dueDateTimeString]]</div>
-						<div id="availability-dates">[[_availabilityDateString]]</div>
+						<div id="availability-dates" tabindex$="[[_getTabIndex(_showDates)]]" role="note">[[_availabilityDateString]]</div>
 						<d2l-tooltip
 							for="availability-dates"
 							boundary="[[_availDateTooltipBoundary]]"
@@ -772,6 +772,10 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		} else {
 			return false;
 		}
+	}
+
+	_getTabIndex(showDates) {
+		return showDates ? '0' : '-1';
 	}
 }
 customElements.define(D2LOuterModule.is, D2LOuterModule);

@@ -173,7 +173,7 @@ class D2LInnerModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 			</div>
 			<div id="date-container">
 				<div id="due-date-time">[[_dueDateTimeString]]</div>
-				<div id="availability-dates">[[_availabilityDateString]]</div>
+				<div id="availability-dates" tabindex$="[[_getTabIndex(_showDates)]]" role="note">[[_availabilityDateString]]</div>
 				<d2l-tooltip
 					for="availability-dates"
 					boundary="[[_availDateTooltipBoundary]]"
@@ -400,6 +400,10 @@ class D2LInnerModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		}
 		const { startDate, endDate } = properties;
 		return formatAvailabilityDateString(this.localize, startDate, endDate, true);
+	}
+
+	_getTabIndex(showDates) {
+		return showDates ? '0' : '-1';
 	}
 }
 customElements.define(D2LInnerModule.is, D2LInnerModule);

@@ -240,7 +240,7 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 				</div>
 				<div class$="[[_getDateContainerClasses(_showDates)]]">
 					<div id="due-date-time">[[_dueDateTimeString]]</div>
-					<div id="availability-dates">[[_availabilityDateString]]</div>
+					<div id="availability-dates" tabindex$="[[_getTabIndex(_showDates)]]" role="note">[[_availabilityDateString]]</div>
 					<d2l-tooltip for="availability-dates">[[_availabilityDateTooltip]]</d2l-tooltip>
 				</div>
 			</div>
@@ -463,6 +463,10 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 		}
 
 		return classes.join(' ');
+	}
+
+	_getTabIndex(showDates) {
+		return showDates ? '0' : '-1';
 	}
 
 }
