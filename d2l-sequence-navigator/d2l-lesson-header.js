@@ -4,7 +4,7 @@
 */
 import { CompletionStatusMixin } from '../mixins/completion-status-mixin.js';
 import { ASVFocusWithinMixin } from '../mixins/asv-focus-within-mixin.js';
-import { formatAvailabilityDateString } from '../util/util.js';
+import { formatAvailabilityDateString, getDueDateTimeString } from '../util/util.js';
 import 'd2l-offscreen/d2l-offscreen.js';
 import '@brightspace-ui/core/components/colors/colors.js';
 import 'd2l-typography/d2l-typography.js';
@@ -199,6 +199,20 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 		div.date-container > div {
 			font-size: 0.65rem;
 		}
+
+		#due-date-time, #availability-dates {
+			font-size: 0.65rem;
+			line-height: var(--d2l-body-small-text_-_line-height);
+		}
+
+		@media (max-width: 415px) {
+			div.date-container {
+				flex-direction: column;
+			}
+			#availability-dates {
+				text-align: end;
+			}
+		}
 		</style>
 
 		<siren-entity href="[[_moduleProgressHref]]" token="[[token]]" entity="{{_moduleProgress}}"></siren-entity>
@@ -225,7 +239,7 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 					</template>
 				</div>
 				<div class$="[[_getDateContainerClasses(_showDates)]]">
-					<div id="due-date"></div>
+					<div id="due-date-time">[[_dueDateTimeString]]</div>
 					<div id="availability-dates" tabindex$="[[_getTabIndex(_showDates)]]" role="note">[[_availabilityDateString]]</div>
 					<d2l-tooltip for="availability-dates">[[_availabilityDateTooltip]]</d2l-tooltip>
 				</div>
@@ -302,6 +316,11 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 				type: Boolean,
 				value: false,
 				computed: '_getShowDates(entity.properties)'
+			},
+			_dueDateTimeString: {
+				type: String,
+				value: '',
+				computed: '_getDueDateTimeString(entity.properties)'
 			},
 			_availabilityDateString: {
 				type: String,
@@ -409,10 +428,16 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 			return false;
 		}
 
-		// TODO: Add due date to this check
-		const { startDate, endDate } = properties;
+		const { startDate, endDate, dueDate } = properties;
 
-		return startDate || endDate;
+		return startDate || endDate || dueDate;
+	}
+
+	_getDueDateTimeString(properties) {
+		if (!properties) {
+			return;
+		}
+		return getDueDateTimeString(properties.dueDate, this.localize);
 	}
 
 	_getAvailabilityDateString(properties) {

@@ -2,7 +2,7 @@ import './d2l-inner-module.js';
 import './d2l-activity-link.js';
 import { CompletionStatusMixin } from '../mixins/completion-status-mixin.js';
 import { PolymerASVLaunchMixin } from '../mixins/polymer-asv-launch-mixin.js';
-import { formatAvailabilityDateString, createDateFromObj } from '../util/util.js';
+import { formatAvailabilityDateString, getDueDateTimeString } from '../util/util.js';
 import '@brightspace-ui-labs/accordion/accordion.js';
 import '@brightspace-ui/core/components/colors/colors.js';
 import '@brightspace-ui/core/components/icons/icon.js';
@@ -122,11 +122,19 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				justify-content: space-between;
 			}
 
-			#due-date, #availability-dates {
-				color: var(--d2l-outer-module-text-color, inherit);
+			#due-date-time, #availability-dates {
+				color: var(--d2l-color-ferrite);
 				font-size: 0.65rem;
-				font-weight: var(--d2l-body-small-text_-_font-weight);
 				line-height: var(--d2l-body-small-text_-_line-height);
+			}
+
+			@media (max-width: 430px) {
+				div.date-container {
+					flex-direction: column;
+				}
+				#availability-dates {
+					text-align: end;
+				}
 			}
 
 			:host([show-loading-skeleton]) .date-container {
@@ -221,7 +229,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				border-radius: 2px;
 			}
 
-			#header-container:hover * {
+			#header-container:hover #top-header-container * {
 				color: var(--d2l-color-celestine-minus-1);
 			}
 
@@ -254,7 +262,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				background-color: var(--d2l-color-gypsum);
 			}
 
-			:host([header-active]) #header-container * {
+			:host([header-active]) #top-header-container * {
 				color: var(--d2l-color-celestine-minus-1);
 			}
 		</style>
@@ -294,7 +302,7 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 						</div>
 					</div>
 					<div class="date-container">
-						<div id="due-date">[[_dueDate]]</div>
+						<div id="due-date-time">[[_dueDateTimeString]]</div>
 						<div id="availability-dates" tabindex$="[[_getTabIndex(_showDates)]]" role="note">[[_availabilityDateString]]</div>
 						<d2l-tooltip
 							for="availability-dates"
@@ -397,10 +405,10 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				type: Boolean,
 				value: false
 			},
-			_dueDate: {
+			_dueDateTimeString: {
 				type: String,
 				value: '',
-				computed: '_getDueDateText(entity.properties)'
+				computed: '_getDueDateTimeString(entity.properties)'
 			},
 			_availabilityDateString: {
 				type: String,
@@ -641,20 +649,11 @@ class D2LOuterModule extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		}
 	}
 
-	_getDueDateText(properties) {
+	_getDueDateTimeString(properties) {
 		if (!properties) {
 			return;
 		}
-
-		const { dueDate } = properties;
-
-		if (!dueDate) {
-			return;
-		}
-		const actualDueDate = createDateFromObj(dueDate);
-		const dueDateString = this.formatDate(actualDueDate,  {format: 'medium'});
-
-		return this.localize('sequenceNavigator.due', 'dueDate', dueDateString);
+		return getDueDateTimeString(properties.dueDate, this.localize);
 	}
 
 	_getAvailabilityDateString(properties) {

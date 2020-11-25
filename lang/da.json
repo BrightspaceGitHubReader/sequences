@@ -41,7 +41,7 @@
    "sequenceNavigator.completedMofN" : "Fuldført {completed}/{total}",
    "sequenceNavigator.countStatus" : "{completed}/{total}",
    "sequenceNavigator.currentModule" : "Enhed {current} af {total}",
-   "sequenceNavigator.due" : "Forfalder {dueDate}",
+   "sequenceNavigator.due" : "Forfalder {dueDateTime}",
    "sequenceNavigator.exempt" : "Foretag undtagelse",
    "sequenceNavigator.launchModule" : "Start lektion",
    "sequenceNavigator.missedActivitiesListHeader" : "Det er de dele, der mangler for at færdiggøre denne enhed:",

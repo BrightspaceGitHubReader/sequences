@@ -41,7 +41,7 @@
     "sequenceNavigator.completedMofN": "{completed}/{total} 완료됨",
     "sequenceNavigator.countStatus": "{completed}/{total}",
     "sequenceNavigator.currentModule": "단위 {current}/{total}",
-    "sequenceNavigator.due": "기한 {dueDate}일",
+    "sequenceNavigator.due": "기한 {dueDateTime}일",
     "sequenceNavigator.exempt": "면제",
     "sequenceNavigator.launchModule": "레슨을 실행합니다.",
     "sequenceNavigator.missedActivitiesListHeader": "이 단위를 완료하기 위해 남은 조각은 다음과 같습니다.",

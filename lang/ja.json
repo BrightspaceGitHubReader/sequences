@@ -41,7 +41,7 @@
    "sequenceNavigator.completedMofN" : "{completed}/{total} 完了",
    "sequenceNavigator.countStatus" : "{completed}/{total}",
    "sequenceNavigator.currentModule" : "単位 {current}/{total}",
-   "sequenceNavigator.due" : "期限 {dueDate}",
+   "sequenceNavigator.due" : "期限 {dueDateTime}",
    "sequenceNavigator.exempt" : "免除",
    "sequenceNavigator.launchModule" : "レッスンの開始",
    "sequenceNavigator.missedActivitiesListHeader" : "このユニットを完了するために残された部分は次のとおりです。",

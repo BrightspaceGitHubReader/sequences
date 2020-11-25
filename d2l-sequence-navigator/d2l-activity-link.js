@@ -1,6 +1,6 @@
 import { CompletionStatusMixin } from '../mixins/completion-status-mixin.js';
 import { PolymerASVLaunchMixin } from '../mixins/polymer-asv-launch-mixin.js';
-import { formatAvailabilityDateString } from '../util/util.js';
+import { formatAvailabilityDateString, getDueDateTimeString } from '../util/util.js';
 import './d2l-completion-status.js';
 import './d2l-completion-requirement.js';
 import '@brightspace-ui/core/components/colors/colors.js';
@@ -160,11 +160,19 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				justify-content: space-between;
 			}
 
-			#due-date, #availability-dates {
+			#due-date-time, #availability-dates {
 				color: var(--d2l-color-ferrite);
 				font-size: 0.65rem;
-				font-weight: var(--d2l-body-small-text_-_font-weight);
 				line-height: var(--d2l-body-small-text_-_line-height);
+			}
+
+			@media (max-width: 525px) {
+				#date-container {
+					flex-direction: column;
+				}
+				#availability-dates {
+					text-align: end;
+				}
 			}
 
 			@keyframes loadingShimmer {
@@ -213,7 +221,7 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 						<d2l-completion-status href="[[href]]" token="[[token]]"></d2l-completion-status>
 					</div>
 					<div id="date-container">
-						<div id="due-date"></div>
+						<div id="due-date-time">[[_dueDateTimeString]]</div>
 						<div id="availability-dates" tabindex$="[[_getTabIndex(_showDates)]]" role="note">[[_availabilityDateString]]</div>
 						<d2l-tooltip
 							for="availability-dates"
@@ -266,6 +274,11 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 				type: Boolean,
 				reflectToAttribute: true,
 				computed: '_getIsCurrentActivity(entity, currentActivity)'
+			},
+			_dueDateTimeString: {
+				type: String,
+				value: '',
+				computed: '_getDueDateTimeString(entity.properties)'
 			},
 			_availDateTooltipBoundary: {
 				type: Object,
@@ -349,6 +362,13 @@ class D2LActivityLink extends PolymerASVLaunchMixin(CompletionStatusMixin()) {
 		if (entity) {
 			this.dispatchEvent(new CustomEvent('d2l-content-entity-loaded', {detail: { href: this.href}}));
 		}
+	}
+
+	_getDueDateTimeString(properties) {
+		if (!properties) {
+			return;
+		}
+		return getDueDateTimeString(properties.dueDate, this.localize);
 	}
 
 	_getAvailabilityDateString(properties) {
