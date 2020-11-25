@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Unit Tests (Headless)
-        run: npm run test:headless
+        run: npm run test
       - name: Incremental Release
         uses: BrightspaceUI/actions/incremental-release@master
         with:
