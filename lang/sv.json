@@ -41,7 +41,7 @@
    "sequenceNavigator.completedMofN" : "Slutförda {completed}/{total}",
    "sequenceNavigator.countStatus" : "{completed}/{total}",
    "sequenceNavigator.currentModule" : "Enhet {current} av {total}",
-   "sequenceNavigator.due" : "Förfaller {dueDate}",
+   "sequenceNavigator.due" : "Förfaller {dueDateTime}",
    "sequenceNavigator.exempt" : "Undantagen",
    "sequenceNavigator.launchModule" : "Starta lektion",
    "sequenceNavigator.missedActivitiesListHeader" : "Det här är kvarvarande delar för att slutföra den här enheten:",

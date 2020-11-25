@@ -41,7 +41,7 @@
    "sequenceNavigator.completedMofN" : "已完成 {completed}/{total}",
    "sequenceNavigator.countStatus" : "{completed}/{total}",
    "sequenceNavigator.currentModule" : "單元 {current}，共 {total} 個單元",
-   "sequenceNavigator.due" : "截止日期：{dueDate}",
+   "sequenceNavigator.due" : "截止日期：{dueDateTime}",
    "sequenceNavigator.exempt" : "免除",
    "sequenceNavigator.launchModule" : "啟動課程",
    "sequenceNavigator.missedActivitiesListHeader" : "若要完成此單元，還需要這些項目：",

@@ -41,7 +41,7 @@
    "sequenceNavigator.completedMofN" : "{completed}/{total} tamamlandı",
    "sequenceNavigator.countStatus" : "{completed}/{total}",
    "sequenceNavigator.currentModule" : "Birim {current} / {total}",
-   "sequenceNavigator.due" : "Teslim Tarihi: {dueDate}",
+   "sequenceNavigator.due" : "Teslim Tarihi: {dueDateTime}",
    "sequenceNavigator.exempt" : "Muaf Tut",
    "sequenceNavigator.launchModule" : "Dersi Başlat",
    "sequenceNavigator.missedActivitiesListHeader" : "Bu ünitede tamamlanması gereken kısımlar şunlardır:",

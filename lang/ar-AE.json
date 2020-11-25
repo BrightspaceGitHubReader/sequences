@@ -41,7 +41,7 @@
     "sequenceNavigator.completedMofN": "تم إكمال {completed}/{total}",
     "sequenceNavigator.countStatus": "{completed}/{total}",
     "sequenceNavigator.currentModule": "الوحدة {current} من أصل {total}",
-    "sequenceNavigator.due": "تاريخ الاستحقاق في {dueDate}",
+    "sequenceNavigator.due": "تاريخ الاستحقاق في {dueDateTime}",
     "sequenceNavigator.exempt": "إعفاء",
     "sequenceNavigator.launchModule": "بدء الدرس",
     "sequenceNavigator.missedActivitiesListHeader": "هذه هي الأقسام المتبقية لإكمال هذه الوحدة:",

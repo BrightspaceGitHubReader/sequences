@@ -41,7 +41,7 @@
    "sequenceNavigator.completedMofN" : "{completed}/{total} terminé(s)",
    "sequenceNavigator.countStatus" : "{completed}/{total}",
    "sequenceNavigator.currentModule" : "Unité {current} de {total}",
-   "sequenceNavigator.due" : "Échéance le {dueDate}",
+   "sequenceNavigator.due" : "Échéance le {dueDateTime}",
    "sequenceNavigator.exempt" : "Exemption",
    "sequenceNavigator.launchModule" : "Lancer la leçon",
    "sequenceNavigator.missedActivitiesListHeader" : "Ce sont les pièces restantes pour terminer cette unité :",

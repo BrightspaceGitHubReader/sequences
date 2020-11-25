@@ -41,7 +41,7 @@
     "sequenceNavigator.completedMofN": "{completed}/{total} voltooid",
     "sequenceNavigator.countStatus": "{completed}/{total}",
     "sequenceNavigator.currentModule": "Eenheid {current} van {total}",
-    "sequenceNavigator.due": "Uiterste datum {dueDate}",
+    "sequenceNavigator.due": "Uiterste datum {dueDateTime}",
     "sequenceNavigator.exempt": "Vrijstellen",
     "sequenceNavigator.launchModule": "Les starten",
     "sequenceNavigator.missedActivitiesListHeader": "Dit zijn de onderdelen die nog voltooid moeten worden:",
