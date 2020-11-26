@@ -71,13 +71,11 @@ To build the lang terms:
 npm build:lang
 ```
 
-## Versioning & Releasing
+## Versioning, Releasing & Deploying
 
-When a pull request is merged, the patch version (0.0.x) in the `package.json` will be incremented, and a tag and GitHub release will be created.
+By default, when a pull request is merged the patch version in the `package.json` will be incremented, a tag will be created, and a Github release will be created.
 
 Include `[increment major]`, `[increment minor]` or `[skip version]` in your merge commit message to change the default versioning behavior.
-
-**Learn More**: [incremental-release GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/incremental-release)
 
 ## Integrating sequences into Brightspace
 
