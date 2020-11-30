@@ -31,7 +31,7 @@
    "moduleListExpanded" : "تم توسيع قائمة الوحدات النمطية",
    "newContentAvailable" : "يتوفر محتوى جديد الآن!",
    "niceWork" : "عمل جيد حتى الآن!",
-   "noNeedToFinish" : "ما من مشكلة في حال لم ترغب في إنهاء {count, plural, one {#} other {#}}.",
+   "noNeedToFinish" : "ما من مشكلة في حال لم ترغب في إنهاء {count, plural, one {# إنهائه} other {# إنهائها}}.",
    "openDocReader" : "فتح DocReader",
    "openInNewTab" : "افتح الارتباط في علامة تبويب جديدة في مستعرض ويب.",
    "openNew" : "فتح في نافذة جديدة",
