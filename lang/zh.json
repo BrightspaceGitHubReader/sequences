@@ -31,7 +31,7 @@
    "moduleListExpanded" : "模块列表已展开",
    "newContentAvailable" : "新内容现在可用！",
    "niceWork" : "到目前为止干得不错！",
-   "noNeedToFinish" : "如果您不需要完成 {count, plural, one {#此活动} other {#这些活动}}，那么没有问题。",
+   "noNeedToFinish" : "如果您不需要完成 {count, plural, one {# 此活动} other {# 这些活动}}，那么没有问题。",
    "openDocReader" : "打开 DocReader",
    "openInNewTab" : "在新的 Web 浏览器选项卡中打开链接。",
    "openNew" : "在新窗口中打开",
