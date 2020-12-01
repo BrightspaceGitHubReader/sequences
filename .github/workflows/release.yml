@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - 'v.*'
+      - 'release/*'
 jobs:
   release:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
@@ -24,5 +24,5 @@ jobs:
       - name: Incremental Release
         uses: BrightspaceUI/actions/incremental-release@master
         with:
-          DEFAULT_INCREMENT: patch
+          DEFAULT_INCREMENT: minor
           GITHUB_TOKEN: ${{ secrets.D2L_GITHUB_TOKEN }}

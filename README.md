@@ -73,9 +73,9 @@ npm build:lang
 
 ## Versioning & Releasing
 
-When a pull request is merged, the patch version (0.0.x) in the `package.json` will be incremented, and a tag and GitHub release will be created.
+When a pull request is merged, the minor version (0.x) in the `package.json` will be incremented, and a tag and GitHub release will be created.
 
-Include `[increment major]`, `[increment minor]` or `[skip version]` in your merge commit message to change the default versioning behavior.
+Include `[increment major]`, `[increment minor]`, `[increment patch]` or `[skip version]` in your merge commit message to change the default versioning behavior.
 
 **Learn More**: [incremental-release GitHub Action](https://github.com/BrightspaceUI/actions/tree/master/incremental-release)
 
