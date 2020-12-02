@@ -193,7 +193,7 @@ class D2LLessonHeader extends ASVFocusWithinMixin(CompletionStatusMixin()) {
 		}
 
 		div.date-container.has-dates {
-			border-top: 1px solid white;
+			border-top: 1px solid var(--d2l-lesson-header-text-color);
 		}
 
 		div.date-container > div {
