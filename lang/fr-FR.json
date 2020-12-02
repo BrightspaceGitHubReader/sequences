@@ -31,7 +31,7 @@
    "moduleListExpanded" : "Liste des modules développée",
    "newContentAvailable" : "Du nouveau contenu est maintenant disponible !",
    "niceWork" : "Bon travail !",
-   "noNeedToFinish" : "Si vous n’avez pas besoin de terminer {count, plural, one {# cette activité} other {# ces activités}}, aucun problème.",
+   "noNeedToFinish" : "Si vous n’avez pas besoin de terminer {count, plural, one {cette activité} other {ces activités}}, aucun problème.",
    "openDocReader" : "Ouvrir DocReader",
    "openInNewTab" : "Ouvrir le lien dans un nouvel onglet du navigateur Web.",
    "openNew" : "Ouvrir dans une nouvelle fenêtre",

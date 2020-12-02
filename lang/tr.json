@@ -31,7 +31,7 @@
    "moduleListExpanded" : "Modül listesi genişletildi",
    "newContentAvailable" : "Yeni içerik şimdi mevcut!",
    "niceWork" : "Şu ana kadar iyi gidiyorsunuz!",
-   "noNeedToFinish" : "{count, plural, one {# bunu} other {# bunları}} bitirmeniz gerekmiyorsa bırakabilirsiniz.",
+   "noNeedToFinish" : "{count, plural, one {bunu} other {bunları}} bitirmeniz gerekmiyorsa bırakabilirsiniz.",
    "openDocReader" : "DocReader'ı Aç",
    "openInNewTab" : "Bağlantıyı yeni bir tarayıcı sekmesinde açın.",
    "openNew" : "Yeni pencerede aç",
